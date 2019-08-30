@@ -1,10 +1,10 @@
 module.exports = {
   test: {
     client: 'pg',
-    version: '9.5',
+    version: '9.6',
     connection: {
       host: 'localhost',
-      user: 'root',
+      user: 'postgres',
       password: '123',
       database: 'enli',
     },
