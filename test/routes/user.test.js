@@ -68,3 +68,10 @@ test('Não deve inserir usuário com email existente', () => {
       expect(res.body.error).toBe('Já existe usuário com este email');
     });
 });
+
+test('Não deve acessar uma rota protegida sem token', () => {
+  return request(app).get('/users')
+    .then((res) => {
+      expect(res.status).toBe(401);
+    });
+});
