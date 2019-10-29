@@ -1,4 +1,12 @@
+const multer = require('multer');
+const multerConfig = require('../config/multer');
+
+const multerUpload = multer(multerConfig).single('file');
+
 module.exports = (app) => {
+  app.route('/auth/upload')
+    .post(multerUpload, app.routes.upload.uploadFile);
+
   app.route('/auth/signin')
     .post(app.routes.auth.signin);
 
