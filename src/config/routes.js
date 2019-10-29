@@ -4,6 +4,12 @@ const multerConfig = require('../config/multer');
 const multerUpload = multer(multerConfig).single('file');
 
 module.exports = (app) => {
+  app.route('/auth/uploads/:id')
+    .delete(app.routes.upload.remove);
+
+  app.route('/auth/uploads')
+    .get(app.routes.upload.findAll);
+
   app.route('/auth/upload')
     .post(multerUpload, app.routes.upload.uploadFile);
 
