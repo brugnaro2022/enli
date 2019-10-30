@@ -6,6 +6,8 @@ const cors = require('cors');
 
 const morgan = require('morgan');
 
+const path = require('path');
+
 module.exports = (app) => {
   app.use(bodyParser.json());
   // app.use(knexLogger(app.db));
@@ -13,4 +15,5 @@ module.exports = (app) => {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
   app.use(morgan('dev'));
+  app.use('/files', express.static(path.resolve(__dirname, '..', '..', 'tmp', 'uploads')));
 };
